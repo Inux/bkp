@@ -17,7 +17,7 @@ doBackup () {
     do
         echo 'Backup: '$d
         mkdir -p $DISKSTATION$d
-        rsync -a --info=progress2 $d $DISKSTATION$d
+        rsync -avzr --rsh="ssh -c arcfour" --delete-after --whole-file --info=progress2 $d $DISKSTATION$d
     done
     echo $DISKSTATION' Done. Successful'
 }
