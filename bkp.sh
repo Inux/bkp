@@ -14,10 +14,6 @@ directories=(
     '/Users/inux/go/src/steveineichenWeb/'
 )
 
-#copy some important files to bkp direcotry
-cp ~/.bashrc /Users/inux/Projects/bkp/critical/
-cp -r ~/.ssh /Users/inux/Projects/bkp/critical/
-
 #do the actual bakup
 doBackup () {
     echo $DISKSTATION' is available, starting bkp...'
@@ -29,6 +25,10 @@ doBackup () {
     done
     echo $DISKSTATION' Done. Successful'
 }
+
+#copy files
+cp ~/.bashrc /Users/inux/Projects/bkp/critical/
+cp -r ~/.ssh /Users/inux/Projects/bkp/critical/
 
 #check if backup is possible
 if [ -d "$DISKSTATION" ]; then
