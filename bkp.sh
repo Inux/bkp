@@ -14,6 +14,10 @@ directories=(
     '/Users/inux/go/src/steveineichenWeb/'
 )
 
+#copy some important files to bkp direcotry
+cp ~/.bashrc /Users/inux/Projects/bkp/critical/
+cp -r ~/.ssh /Users/inux/Projects/bkp/critical/
+
 #do the actual bakup
 doBackup () {
     echo $DISKSTATION' is available, starting bkp...'
