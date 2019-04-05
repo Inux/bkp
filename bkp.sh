@@ -2,7 +2,7 @@
 
 #rsync v3.1 or higher required & bash of course
 
-DISKSTATION=/Volumes/diskstation/bkp/
+DISKSTATION=/Volumes/diskstation/bkp
 
 #directories to backup
 directories=(
@@ -17,18 +17,28 @@ directories=(
 #do the actual bakup
 doBackup () {
     echo $DISKSTATION' is available, starting bkp...'
+    mkdir -p $DISKSTATION
+    mkdir -p $DISKSTATION/Users
+    mkdir -p $DISKSTATION/Users/inux
     for d in "${directories[@]}"
     do
         echo 'Backup: '$d
-        mkdir -p $DISKSTATION$d
-        rsync -avzr --rsh="ssh -c arcfour" --delete-after --whole-file --info=progress2 --exclude .git/ --exclude node_modules/ $d $DISKSTATION$d
+        rsync -z -r --rsh="ssh -c arcfour" --delete-after --whole-file --info=progress2 --exclude .git/ --exclude node_modules/ $d $DISKSTATION$d
     done
     echo $DISKSTATION' Done. Successful'
 }
 
-#copy files
-cp ~/.bashrc /Users/inux/Projects/bkp/critical/
-cp -r ~/.ssh /Users/inux/Projects/bkp/critical/
+#copy files from home directory
+mkdir -p /Users/inux/Projects/bkp/critical/home
+cp ~/.bashrc /Users/inux/Projects/bkp/critical/home
+cp ~/.bash_profile /Users/inux/Projects/bkp/critical/home
+cp ~/.inuxenv /Users/inux/Projects/bkp/critical/home
+cp ~/.inuxworkspaces /Users/inux/Projects/bkp/critical/home
+cp ~/.zshrc /Users/inux/Projects/bkp/critical/home
+cp ~/.zshrc.pre-oh-my-zsh /Users/inux/Projects/bkp/critical/home
+
+rsync -avzr --delete-after --whole-file --info=progress2 ~/.oh-my-zsh /Users/inux/Projects/bkp/critical/home
+rsync -avzr --delete-after --whole-file --info=progress2 ~/.ssh /Users/inux/Projects/bkp/critical/home
 
 #check if backup is possible
 if [ -d "$DISKSTATION" ]; then
@@ -36,4 +46,3 @@ if [ -d "$DISKSTATION" ]; then
 else
     echo $DISKSTATION' is not available. Nothing to do...'
 fi
-
