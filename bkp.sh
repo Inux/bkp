@@ -6,9 +6,9 @@ DISKSTATION=/Volumes/diskstation/bkp
 
 #directories to backup
 directories=(
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/inux'
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/Family'
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/SF'
+    '/Users/inux/Library/Mobile Documents/com~apple~CloudDocs/inux'
+    '/Users/inux/Library/Mobile Documents/com~apple~CloudDocs/Family'
+    '/Users/inux/Library/Mobile Documents/com~apple~CloudDocs/SF'
     '/Users/inux/Projects/'
     '/Users/inux/Steuerfälle/'
     '/Users/inux/go/src/hoau/'
@@ -18,13 +18,13 @@ directories=(
 #do the actual bakup
 doBackup () {
     echo $DISKSTATION' is available, starting bkp...'
-    mkdir -p $DISKSTATION
-    mkdir -p $DISKSTATION/Users
-    mkdir -p $DISKSTATION/Users/inux
+    mkdir -p "$DISKSTATION/Users/inux/Library/Mobile Documents/com~apple~CloudDocs/"
+    mkdir -p "$DISKSTATION/Users/inux/go/src/"
+
     for d in "${directories[@]}"
     do
         echo 'Backup: '$d
-        rsync -z -r --rsh="ssh -c arcfour" --delete-after --whole-file --info=progress2 --exclude .git/ --exclude node_modules/ $d $DISKSTATION$d
+        rsync -z -r --rsh="ssh -c arcfour" --delete-after --whole-file --info=progress2 --exclude .git/ --exclude node_modules/ "$d" "$DISKSTATION$d"
     done
     echo $DISKSTATION' Done. Successful'
 }
