@@ -36,6 +36,7 @@ cp ~/.inuxenv /Users/inux/Projects/bkp/critical/home
 cp ~/.inuxworkspaces /Users/inux/Projects/bkp/critical/home
 cp ~/.zshrc /Users/inux/Projects/bkp/critical/home
 cp ~/.zshrc.pre-oh-my-zsh /Users/inux/Projects/bkp/critical/home
+cp ~/.config/karabiner/karabiner.json /Users/inux/Projects/bkp/critical/home/.config/karabiner/karabiner.json
 
 rsync -avzr --delete-after --whole-file --info=progress2 ~/.oh-my-zsh /Users/inux/Projects/bkp/critical/home
 rsync -avzr --delete-after --whole-file --info=progress2 ~/.ssh /Users/inux/Projects/bkp/critical/home
