@@ -6,13 +6,13 @@ DISKSTATION=/Volumes/diskstation/bkp
 
 #directories to backup
 directories=(
+    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/inux'
+    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/Family'
+    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/SF'
     '/Users/inux/Projects/'
     '/Users/inux/Steuerfälle/'
     '/Users/inux/go/src/hoau/'
     '/Users/inux/go/src/steveineichenWeb/'
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/inux'
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/Family'
-    '/Users/inux/Library/Mobile\\ Documents/com\\~apple\\~CloudDocs/SF'
 )
 
 #do the actual bakup
